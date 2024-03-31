@@ -1,6 +1,7 @@
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
+  TwitterAuthProvider,
   getAuth,
   signInWithPopup,
   signOut,
@@ -13,13 +14,13 @@ const Login = () => {
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const twitterProvider = new TwitterAuthProvider();
 
   const handleSingInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const loggedUser = result.user;
         setUser(loggedUser);
-        console.log(loggedUser);
       })
       .catch((error) => {
         console.log(error);
@@ -30,7 +31,17 @@ const Login = () => {
       .then((result) => {
         const LloggedUser = result.user;
         setUser(LloggedUser);
-        console.log(LloggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleSingInWithTwiiter = () => {
+    signInWithPopup(auth, twitterProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        setUser(loggedUser);
+        console.log(loggedUser);
       })
       .catch((error) => {
         console.log(error);
@@ -54,6 +65,7 @@ const Login = () => {
         <div>
           <button onClick={handleSingInWithGoogle}>singinWithGoogle</button>
           <button onClick={handleSingInWithGithub}>singinWithGithub</button>
+          <button onClick={handleSingInWithTwiiter}>singinWithTwitter</button>
         </div>
       )}
 
