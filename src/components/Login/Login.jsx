@@ -27,25 +27,17 @@ const Login = () => {
       });
   };
   const handleSingInWithGithub = () => {
-    signInWithPopup(auth, githubProvider)
-      .then((result) => {
-        const LloggedUser = result.user;
-        setUser(LloggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    signInWithPopup(auth, githubProvider).then((result) => {
+      const LloggedUser = result.user;
+      setUser(LloggedUser);
+    });
   };
   const handleSingInWithTwiiter = () => {
-    signInWithPopup(auth, twitterProvider)
-      .then((result) => {
-        const loggedUser = result.user;
-        setUser(loggedUser);
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    signInWithPopup(auth, twitterProvider).then((result) => {
+      const loggedUser = result.user;
+      setUser(loggedUser);
+      console.log(loggedUser);
+    });
   };
   const handleSingOut = () => {
     signOut(auth)
